@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 import { config, projectId } from "@/config";
 import { createWeb3Modal } from "@web3modal/wagmi/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { State, WagmiProvider } from "wagmi";
+import { WagmiProvider } from "wagmi";
 
 const queryClient = new QueryClient();
 
@@ -15,7 +15,10 @@ createWeb3Modal({
   projectId,
   enableAnalytics: true,
   enableOnramp: true,
-  themeMode: "light"
+  themeMode: "light",
+	themeVariables: {
+		"--w3m-accent": "#000000",
+	}
 });
 
 export default function Web3ModalProvider({ children, initialState }) {
