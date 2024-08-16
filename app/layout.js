@@ -1,6 +1,6 @@
 import "./globals.css";
 import { headers } from "next/headers";
-import { Inter as FontSans } from "next/font/google"
+import { DM_Sans, Space_Mono } from 'next/font/google';
 import { cookieToInitialState } from "wagmi";
 import { config } from "@/config";
 import Web3ModalProvider from "@/context";
@@ -11,9 +11,17 @@ export const metadata = {
   description: "AppKit by WalletConnect"
 };
 
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
+const fontHeading = DM_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-heading',
+})
+
+const fontBody = Space_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+	weight: ['400', '700']
 })
 
 export default function RootLayout({ children }) {
@@ -22,7 +30,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          fontHeading.variable,
+          fontBody.variable
         )}>
         <Web3ModalProvider initialState={initialState}>{children}</Web3ModalProvider>
       </body>
