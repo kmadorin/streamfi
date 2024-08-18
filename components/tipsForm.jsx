@@ -21,10 +21,15 @@ export default function TipsForm() {
     setCurrency(value)
   }
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log("submitting form");
+	}
+
 	return (
 		<div className="p-6 bg-background rounded-b-lg md:p-10 lg:p-12">
         <h2 className="text-2xl font-bold mb-4">Send a Tip</h2>
-        <form className="grid gap-4">
+        <form className="grid gap-4" onSubmit={handleSubmit}> 
           <div className="grid gap-2">
             <Label htmlFor="name">Your Name</Label>
             <Input id="name" placeholder="Enter your name" />
